@@ -8,6 +8,6 @@ public class PortalRotation : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate(Vector3.forward * rotationSpeed);
+        transform.Rotate(Vector3.forward * rotationSpeed * -1);
     }
 }
