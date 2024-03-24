@@ -10,7 +10,8 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, fireSpeed);
+        if(target) transform.position = Vector3.MoveTowards(transform.position, target.position, fireSpeed);
+        else Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)

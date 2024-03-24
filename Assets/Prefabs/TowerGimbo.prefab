@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3506351759175879541}
   - component: {fileID: 6332752870992782444}
   - component: {fileID: -2923083911203563341}
+  - component: {fileID: -3555531934589862212}
   m_Layer: 7
-  m_Name: Tower
+  m_Name: TowerGimbo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 470383413
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 773719799, guid: 770a070842d660d44a8f9425e24a251e, type: 3}
+  m_Sprite: {fileID: 1715428240, guid: 181b162e0feb77f4880332471a451da3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,4 +100,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 2
   reloadTime: 0.5
-  projectilePrefab: {fileID: 539860653544510027, guid: 53c543b76268ad742874a51fbeab6ab7, type: 3}
+  projectilePrefab: {fileID: 539860653544510027, guid: afc9a2ef533a84c4da704588666d734c, type: 3}
+--- !u!61 &-3555531934589862212
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8155091882362385739}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
