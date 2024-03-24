@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 2
   reloadTime: 0.5
+  projectilePrefab: {fileID: 539860653544510027, guid: 53c543b76268ad742874a51fbeab6ab7, type: 3}
