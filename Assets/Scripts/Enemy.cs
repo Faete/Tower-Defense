@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     protected List<Vector3> pathPoints = new List<Vector3>();
     protected int pathPointIndex = 0;
 
-    float currentHealth;
     float maxHealth = 5;
+    float currentHealth;
     [SerializeField] Transform healthBarFill;
 
     void Start()
