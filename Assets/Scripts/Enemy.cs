@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
     
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] Transform path;
@@ -14,8 +14,13 @@ public class EnemyMovement : MonoBehaviour
     protected List<Vector3> pathPoints = new List<Vector3>();
     protected int pathPointIndex = 0;
 
+    float currentHealth;
+    float maxHealth = 5;
+    [SerializeField] Transform healthBarFill;
+
     void Start()
     {
+        currentHealth = maxHealth;
         foreach(Transform point in path){
             pathPoints.Add(point.position);
         }
@@ -24,6 +29,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if(currentHealth <= 0) Destroy(gameObject);
+        healthBarFill.localScale = new Vector3(currentHealth / maxHealth, 0.15f, 1f);
+
         if((pathPointIndex + 1) >= pathPoints.Count) Destroy(gameObject);
         transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], moveSpeed * Time.deltaTime);
         if(transform.position == pathPoints[pathPointIndex + 1]) pathPointIndex++;
@@ -32,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Projectile"){
-            Debug.Log("ENemy hit!");
+            currentHealth -= other.gameObject.GetComponent<Projectile>().power;
         }
     }
 }
