@@ -28,4 +28,11 @@ public class EnemyMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], moveSpeed * Time.deltaTime);
         if(transform.position == pathPoints[pathPointIndex + 1]) pathPointIndex++;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Projectile"){
+            Debug.Log("ENemy hit!");
+        }
+    }
 }
