@@ -6,8 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class Builder : MonoBehaviour
 {
-    [SerializeField] Tilemap tilemap;
-    [SerializeField] GameObject tower;
+    public Tilemap tilemap;
+    public GameObject tower;
     Vector3 offset = new Vector3(0.5f, 0.5f, 0);
 
     void Start(){
@@ -23,7 +23,11 @@ public class Builder : MonoBehaviour
         transform.position = tileWorldPos + offset;
         if(Input.GetMouseButtonDown(0)){
             if(Physics2D.Raycast(transform.position, Vector3.zero)) Destroy(gameObject);
-            else Instantiate(tower, transform.position, Quaternion.identity);
+            else{
+                Instantiate(tower, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
+        if(Input.GetMouseButtonDown(1)) Destroy(gameObject);
     }
 }
