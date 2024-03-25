@@ -7,9 +7,8 @@ public class ButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject builderPrefab;
     [SerializeField] Tilemap tilemap;
-    [SerializeField] Critter critter;
 
-    public void Build(GameObject tower){
+    public void Build(Critter critter){
         GameObject builderObject = Instantiate(builderPrefab, transform.position, Quaternion.identity);
         Builder builder = builderObject.GetComponent<Builder>();
         builder.tilemap = tilemap;
