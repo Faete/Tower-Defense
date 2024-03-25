@@ -26,7 +26,13 @@ public class Builder : MonoBehaviour
             if(Physics2D.Raycast(transform.position, Vector3.zero)) Destroy(gameObject);
             else{
                 GameObject towerObject = Instantiate(towerPrefab, transform.position, Quaternion.identity);
-                towerObject.GetComponent<Tower>().critter = critter;
+                Tower towerComponent = towerObject.GetComponent<Tower>();
+                towerComponent.range = critter.attackRange;
+                towerComponent.reloadTime = critter.reloadTime;
+                towerObject.GetComponent<SpriteRenderer>().sprite = critter.sprite;
+                towerComponent.projectileSpeed = critter.projectileSpeed;
+                towerComponent.projectilePower = critter.attackPower;
+                towerComponent.projectileSprite = critter.projectileSprite;
                 Destroy(gameObject);
             }
         }

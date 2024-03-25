@@ -6,19 +6,15 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
 
-    float range;
-    float reloadTime;
+    public float range;
+    public float reloadTime;
     [SerializeField] GameObject projectilePrefab;
 
+
+    public float projectileSpeed;
+    public float projectilePower;
+    public Sprite projectileSprite;
     protected bool canShoot = true;
-
-    public Critter critter;
-
-    void Start(){
-        range = critter.attackRange;
-        reloadTime = critter.reloadTime;
-        GetComponent<SpriteRenderer>().sprite = critter.sprite;
-    }
 
     void Update()
     {
@@ -26,9 +22,9 @@ public class Tower : MonoBehaviour
        if(hit && canShoot){
         GameObject projectileObject = Instantiate(projectilePrefab, transform);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.fireSpeed = critter.projectileSpeed;
-        projectile.power = critter.attackPower;
-        projectileObject.GetComponent<SpriteRenderer>().sprite = critter.projectileSprite;
+        projectile.fireSpeed = projectileSpeed;
+        projectile.power = projectilePower;
+        projectileObject.GetComponent<SpriteRenderer>().sprite = projectileSprite;
         projectile.target = hit.transform;
         canShoot = false;
         Invoke(nameof(CanShootAgain), reloadTime);
