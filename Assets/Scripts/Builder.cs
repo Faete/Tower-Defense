@@ -7,12 +7,13 @@ using UnityEngine.Tilemaps;
 public class Builder : MonoBehaviour
 {
     public Tilemap tilemap;
-    public GameObject tower;
+    public Critter critter;
     Vector3 offset = new Vector3(0.5f, 0.5f, 0);
+    [SerializeField] GameObject towerPrefab;
 
     void Start(){
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = tower.GetComponent<SpriteRenderer>().sprite;
+        spriteRenderer.sprite = critter.sprite;
         spriteRenderer.color = new Color(1f, 1f, 1f, 0.75f);
     }
     void Update()
@@ -24,7 +25,8 @@ public class Builder : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             if(Physics2D.Raycast(transform.position, Vector3.zero)) Destroy(gameObject);
             else{
-                Instantiate(tower, transform.position, Quaternion.identity);
+                GameObject towerObject = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                towerObject.GetComponent<Tower>().critter = critter;
                 Destroy(gameObject);
             }
         }

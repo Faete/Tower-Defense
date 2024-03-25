@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float fireSpeed = 2f;
+    public float fireSpeed = 2f;
     public float power = 3f;
     public Transform target;
 

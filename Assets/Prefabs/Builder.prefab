@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
-  tower: {fileID: 2117026196295400821, guid: f05fab1fa5f03b34592867431eb76f5a, type: 3}
+  critter: {fileID: 0}
+  towerPrefab: {fileID: 2117026196295400821, guid: 71a21e16884b55b4ebf20949d15d278d, type: 3}
 --- !u!212 &6802680851884940660
 SpriteRenderer:
   m_ObjectHideFlags: 0
