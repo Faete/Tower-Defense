@@ -21,5 +21,5 @@ MonoBehaviour:
   attackPower: 1
   reloadTime: 0.5
   projectileSpeed: 0.5
-  attackRange: 1
+  attackRange: 2
   projectileSprite: {fileID: 21300000, guid: c62a3cbd2c008d445915fb5fbc25468e, type: 3}
