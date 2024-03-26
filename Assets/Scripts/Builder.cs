@@ -11,6 +11,9 @@ public class Builder : MonoBehaviour
     Vector3 offset = new Vector3(0.5f, 0.5f, 0);
     [SerializeField] GameObject towerPrefab;
 
+    public int critterIdx;
+    public Inventory inventory;
+
     void Start(){
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = critter.sprite;
@@ -33,6 +36,8 @@ public class Builder : MonoBehaviour
                 towerComponent.projectileSpeed = critter.projectileSpeed;
                 towerComponent.projectilePower = critter.attackPower;
                 towerComponent.projectileSprite = critter.projectileSprite;
+
+                inventory.critters.Remove(inventory.critters[critterIdx]);
                 Destroy(gameObject);
             }
         }

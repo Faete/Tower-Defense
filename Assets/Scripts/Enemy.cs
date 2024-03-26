@@ -33,8 +33,10 @@ public class Enemy : MonoBehaviour
         healthBarFill.localScale = new Vector3(currentHealth / maxHealth, 0.15f, 1f);
 
         if((pathPointIndex + 1) >= pathPoints.Count) Destroy(gameObject);
-        transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], moveSpeed * Time.deltaTime);
-        if(transform.position == pathPoints[pathPointIndex + 1]) pathPointIndex++;
+        else{
+            transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], moveSpeed * Time.deltaTime);
+            if(transform.position == pathPoints[pathPointIndex + 1]) pathPointIndex++;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
