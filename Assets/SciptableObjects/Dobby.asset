@@ -23,3 +23,4 @@ MonoBehaviour:
   projectileSpeed: 0.5
   attackRange: 2
   projectileSprite: {fileID: 21300000, guid: e45da37b78a3e3e428325de064e3c8cf, type: 3}
+  moveSpeed: 1

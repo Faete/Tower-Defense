@@ -18,4 +18,6 @@ public class Critter : ScriptableObject
     public float projectileSpeed;
     public float attackRange;
     public Sprite projectileSprite;
+
+    public float moveSpeed;
 }

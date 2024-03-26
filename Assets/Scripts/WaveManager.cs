@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] Transform path;
+
+    [SerializeField] List<Critter> critters;
+    [SerializeField] int numWaves;
+    [SerializeField] int crittersPerWave;
+    [SerializeField] float timeBetweenWaves;
+    [SerializeField] float timeBetweenSpawns;
+
+    void Start(){
+        StartCoroutine(SpawnAllWaves());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void SpawnCritter(){
+        int randomIndex = Random.Range(0, critters.Count);
+        Critter critter = Instantiate(critters[randomIndex]);
+        Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
+        enemy.path = path;
+        enemy.critter = critter;
+    }
+
+    IEnumerator SpawnWave(){
+        for(int i = 0; i < crittersPerWave; ++i){
+            SpawnCritter();
+            yield return new WaitForSeconds(timeBetweenSpawns);
+        }
+    }
+
+    IEnumerator SpawnAllWaves(){
+        for(int i = 0; i < numWaves; ++i){
+            StartCoroutine(SpawnWave());
+            yield return new WaitForSeconds(timeBetweenWaves);
+        }
     }
 }
