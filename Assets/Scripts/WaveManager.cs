@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float timeBetweenSpawns;
 
     void Start(){
-        StartCoroutine(SpawnAllWaves());
+        StartCoroutine(SpawnWaves());
     }
 
     void SpawnCritter(){
@@ -25,16 +25,12 @@ public class WaveManager : MonoBehaviour
         enemy.critter = critter;
     }
 
-    IEnumerator SpawnWave(){
-        for(int i = 0; i < crittersPerWave; ++i){
-            SpawnCritter();
-            yield return new WaitForSeconds(timeBetweenSpawns);
-        }
-    }
-
-    IEnumerator SpawnAllWaves(){
+    IEnumerator SpawnWaves(){
         for(int i = 0; i < numWaves; ++i){
-            StartCoroutine(SpawnWave());
+            for(int j = 0; j < crittersPerWave; ++j){
+                SpawnCritter();
+                yield return new WaitForSeconds(timeBetweenSpawns);
+            }
             yield return new WaitForSeconds(timeBetweenWaves);
         }
     }
