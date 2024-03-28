@@ -27,7 +27,8 @@ public class Catcher : MonoBehaviour
             foreach(RaycastHit2D hit in hits){
                 if(hit.transform.gameObject.CompareTag("Enemy")){
                     Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
-                    if(enemy.canCatch){
+                    if(enemy.canCatch && inventoryManager.catchers > 0){
+                        inventoryManager.catchers--;
                         inventoryManager.critters.Add(enemy.critter);
                         Destroy(hit.transform.gameObject);
                         break;

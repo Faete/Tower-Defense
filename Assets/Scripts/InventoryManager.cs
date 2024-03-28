@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public List<Critter> critters;
+    public int catchers;
 
     void Start(){
         Save();

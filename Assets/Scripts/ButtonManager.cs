@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -15,6 +17,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] List<GameObject> critterButtons;
     [SerializeField] GameObject leftButton;
     [SerializeField] GameObject rightButton;
+    [SerializeField] GameObject catcherButton;
 
     List<Critter> critterWindow;
     int critterWindowNum = 0;
@@ -22,6 +25,7 @@ public class ButtonManager : MonoBehaviour
     void Update(){
         SetCritterWindow();
         DisplayArrowButtons();
+        CatcherButtonText();
     }
 
     void SetCritterWindow(){
@@ -44,6 +48,10 @@ public class ButtonManager : MonoBehaviour
         else leftButton.SetActive(true);
     }
 
+    void CatcherButtonText(){
+        catcherButton.GetComponentInChildren<TextMeshProUGUI>().text = inventoryManager.catchers.ToString();
+    }
+
     public void Build(int idx){
         Critter critter = critterWindow[idx];
         GameObject builderObject = Instantiate(builderPrefab, transform.position, Quaternion.identity);
@@ -55,10 +63,12 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void Catcher(){
-        GameObject catcherObject = Instantiate(catcherPrefab, transform.position, Quaternion.identity);
-        Catcher catcher = catcherObject.GetComponent<Catcher>();
-        catcher.tilemap = tilemap;
-        catcher.inventoryManager = inventoryManager;
+        if(inventoryManager.catchers > 0){
+            GameObject catcherObject = Instantiate(catcherPrefab, transform.position, Quaternion.identity);
+            Catcher catcher = catcherObject.GetComponent<Catcher>();
+            catcher.tilemap = tilemap;
+            catcher.inventoryManager = inventoryManager;
+        }
     }
     public void IncCritterWindow(){
         critterWindowNum++;
