@@ -15,10 +15,11 @@ public class Enemy : MonoBehaviour
 
     public Critter critter;
     float currentHealth;
-    [SerializeField] Transform healthBarFill;
+    Transform healthBarFill;
 
     void Start()
     {
+        healthBarFill = transform.GetChild(0);
         GetComponent<SpriteRenderer>().sprite = critter.sprite;
         currentHealth = critter.health;
         foreach(Transform point in path){

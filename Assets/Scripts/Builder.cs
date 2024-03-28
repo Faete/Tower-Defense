@@ -12,7 +12,7 @@ public class Builder : MonoBehaviour
     [SerializeField] GameObject towerPrefab;
 
     public int critterIdx;
-    public Inventory inventory;
+    public InventoryManager inventoryManager;
 
     void Start(){
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,7 +32,7 @@ public class Builder : MonoBehaviour
                 Tower towerComponent = towerObject.GetComponent<Tower>();
                 towerComponent.critter = critter;
 
-                inventory.critters.Remove(inventory.critters[critterIdx]);
+                inventoryManager.critters.Remove(inventoryManager.critters[critterIdx]);
                 Destroy(gameObject);
             }
         }

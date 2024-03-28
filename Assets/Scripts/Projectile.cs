@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float fireSpeed = 2f;
-    public float power = 3f;
+    public float fireSpeed;
+    public float power;
     public Transform target;
 
     void FixedUpdate()
@@ -16,6 +16,6 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Enemy") Destroy(gameObject);
+        if(other.CompareTag("Enemy")) Destroy(gameObject);
     }
 }

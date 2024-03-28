@@ -10,7 +10,7 @@ public class ButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject builderPrefab;
     [SerializeField] Tilemap tilemap;
-    [SerializeField] Inventory inventory;
+    [SerializeField] InventoryManager inventoryManager;
     [SerializeField] List<GameObject> critterButtons;
     [SerializeField] GameObject leftButton;
     [SerializeField] GameObject rightButton;
@@ -28,7 +28,7 @@ public class ButtonManager : MonoBehaviour
             button.SetActive(false);
         }
         critterWindow = new List<Critter>();
-        critterWindow.AddRange(inventory.critters.Skip(critterWindowNum * 4).Take(4));
+        critterWindow.AddRange(inventoryManager.critters.Skip(critterWindowNum * 4).Take(4));
         for(int i = 0; i < critterWindow.Count; ++i){
             critterButtons[i].SetActive(true);
             critterButtons[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = critterWindow[i].sprite;
@@ -37,7 +37,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     void DisplayArrowButtons(){
-        if((critterWindowNum + 1) * 4 > inventory.critters.Count - 1) rightButton.SetActive(false);
+        if((critterWindowNum + 1) * 4 > inventoryManager.critters.Count - 1) rightButton.SetActive(false);
         else rightButton.SetActive(true);
         if(critterWindowNum == 0) leftButton.SetActive(false);
         else leftButton.SetActive(true);
@@ -50,7 +50,7 @@ public class ButtonManager : MonoBehaviour
         builder.tilemap = tilemap;
         builder.critter = critter;
         builder.critterIdx = critterWindowNum * 4 + idx;
-        builder.inventory = inventory;
+        builder.inventoryManager = inventoryManager;
     }
 
     public void IncCritterWindow(){

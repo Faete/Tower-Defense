@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f3dc88811d88241a5af591ad595ee7, type: 3}
   m_Name: Gloob
   m_EditorClassIdentifier: 
+  catchable: 1
+  canSpawnOnWater: 0
   name: Gloob
   level: 1
   experience: 0

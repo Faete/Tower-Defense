@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2f3dc88811d88241a5af591ad595ee7, type: 3}
-  m_Name: Gimbo
+  m_Name: Dobby
   m_EditorClassIdentifier: 
-  name: Gimbo
+  catchable: 1
+  canSpawnOnWater: 0
+  name: Dobby
   level: 1
   experience: 0
   experienceGranted: 0
   health: 10
-  sprite: {fileID: 1715428240, guid: 181b162e0feb77f4880332471a451da3, type: 3}
-  attackPower: 1
-  reloadTime: 0.5
+  sprite: {fileID: 773719799, guid: 770a070842d660d44a8f9425e24a251e, type: 3}
+  attackPower: 2
+  reloadTime: 1
   projectileSpeed: 0.5
   attackRange: 2
-  projectileSprite: {fileID: 21300000, guid: c62a3cbd2c008d445915fb5fbc25468e, type: 3}
+  projectileSprite: {fileID: 21300000, guid: e45da37b78a3e3e428325de064e3c8cf, type: 3}
   moveSpeed: 1
