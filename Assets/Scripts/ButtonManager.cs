@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject builderPrefab;
+    [SerializeField] GameObject catcherPrefab;
     [SerializeField] Tilemap tilemap;
     [SerializeField] InventoryManager inventoryManager;
     [SerializeField] List<GameObject> critterButtons;
@@ -53,6 +54,12 @@ public class ButtonManager : MonoBehaviour
         builder.inventoryManager = inventoryManager;
     }
 
+    public void Catcher(){
+        GameObject catcherObject = Instantiate(catcherPrefab, transform.position, Quaternion.identity);
+        Catcher catcher = catcherObject.GetComponent<Catcher>();
+        catcher.tilemap = tilemap;
+        catcher.inventoryManager = inventoryManager;
+    }
     public void IncCritterWindow(){
         critterWindowNum++;
     }

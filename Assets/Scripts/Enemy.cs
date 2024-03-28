@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public Critter critter;
     float currentHealth;
     Transform healthBarFill;
+    public bool canCatch;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
             pathPoints.Add(point.position);
         }
         transform.position = pathPoints[0];
+        canCatch = false;
     }
 
     void Update()
@@ -38,6 +40,7 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("Projectile"))
         {
             currentHealth -= other.gameObject.GetComponent<Projectile>().power;
+            if(currentHealth < (critter.health / 2)) canCatch = true;
         }
     }
     
