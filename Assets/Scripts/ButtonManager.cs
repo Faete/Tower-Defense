@@ -37,6 +37,7 @@ public class ButtonManager : MonoBehaviour
         for(int i = 0; i < critterWindow.Count; ++i){
             critterButtons[i].SetActive(true);
             critterButtons[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = critterWindow[i].sprite;
+            critterButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = $"Lvl: {critterWindow[i].level}";
         }
 
     }

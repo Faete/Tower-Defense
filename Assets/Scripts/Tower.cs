@@ -35,11 +35,15 @@ public class Tower : MonoBehaviour
     }
 
     public void GainExperience(int exp){
-        Debug.Log($"{critter.name} gained {exp} experience");
         if(critter.experience >= critter.experienceToLevel){
             critter.level++;
             critter.experience -= critter.experienceToLevel;
             critter.experienceToLevel += 100;
         }
+    }
+
+    public Critter Recall(){
+        Destroy(gameObject);
+        return critter;
     }
 }
