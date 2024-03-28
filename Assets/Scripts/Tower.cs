@@ -5,29 +5,28 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    public Critter critter;
 
-    public float range;
-    public float reloadTime;
     [SerializeField] GameObject projectilePrefab;
 
-
-    public float projectileSpeed;
-    public float projectilePower;
-    public Sprite projectileSprite;
     protected bool canShoot = true;
+
+    void Start(){
+        GetComponent<SpriteRenderer>().sprite = critter.sprite;
+    }
 
     void Update()
     {
-       RaycastHit2D hit = Physics2D.CircleCast(transform.position, range, transform.position, 0, 1<<6);
+       RaycastHit2D hit = Physics2D.CircleCast(transform.position, critter.attackRange, transform.position, 0, 1<<6);
        if(hit && canShoot){
         GameObject projectileObject = Instantiate(projectilePrefab, transform);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.fireSpeed = projectileSpeed;
-        projectile.power = projectilePower;
-        projectileObject.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+        projectile.fireSpeed = critter.projectileSpeed;
+        projectile.power = critter.attackPower;
+        projectileObject.GetComponent<SpriteRenderer>().sprite = critter.projectileSprite;
         projectile.target = hit.transform;
         canShoot = false;
-        Invoke(nameof(CanShootAgain), reloadTime);
+        Invoke(nameof(CanShootAgain), critter.reloadTime);
        }
     }
 

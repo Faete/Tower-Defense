@@ -30,12 +30,7 @@ public class Builder : MonoBehaviour
             else{
                 GameObject towerObject = Instantiate(towerPrefab, transform.position, Quaternion.identity);
                 Tower towerComponent = towerObject.GetComponent<Tower>();
-                towerComponent.range = critter.attackRange;
-                towerComponent.reloadTime = critter.reloadTime;
-                towerObject.GetComponent<SpriteRenderer>().sprite = critter.sprite;
-                towerComponent.projectileSpeed = critter.projectileSpeed;
-                towerComponent.projectilePower = critter.attackPower;
-                towerComponent.projectileSprite = critter.projectileSprite;
+                towerComponent.critter = critter;
 
                 inventory.critters.Remove(inventory.critters[critterIdx]);
                 Destroy(gameObject);

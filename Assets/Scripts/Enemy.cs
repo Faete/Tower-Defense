@@ -14,17 +14,13 @@ public class Enemy : MonoBehaviour
     protected int pathPointIndex = 0;
 
     public Critter critter;
-    float maxHealth;
-    float moveSpeed;
     float currentHealth;
     [SerializeField] Transform healthBarFill;
 
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = critter.sprite;
-        maxHealth = critter.health;
-        moveSpeed = critter.moveSpeed;
-        currentHealth = maxHealth;
+        currentHealth = critter.health;
         foreach(Transform point in path){
             pathPoints.Add(point.position);
         }
@@ -46,11 +42,11 @@ public class Enemy : MonoBehaviour
     
     void Movement(){
         if(currentHealth <= 0) Destroy(gameObject);
-        healthBarFill.localScale = new Vector3(currentHealth / maxHealth, 0.15f, 1f);
+        healthBarFill.localScale = new Vector3(currentHealth / critter.health, 0.15f, 1f);
 
         if((pathPointIndex + 1) >= pathPoints.Count) Destroy(gameObject);
         else{
-            transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], critter.moveSpeed * Time.deltaTime);
             if(transform.position == pathPoints[pathPointIndex + 1]) pathPointIndex++;
         }
     }
