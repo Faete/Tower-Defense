@@ -12,6 +12,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int crittersPerWave;
     [SerializeField] float timeBetweenWaves;
     [SerializeField] float timeBetweenSpawns;
+    [SerializeField] int lowestLevel;
+    [SerializeField] int highestLevel;
 
     void Start(){
         StartCoroutine(SpawnWaves());
@@ -21,6 +23,7 @@ public class WaveManager : MonoBehaviour
         int randomIndex = Random.Range(0, critters.Count);
         Critter critter = Instantiate(critters[randomIndex]);
         Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
+        critter.level = Random.Range(lowestLevel, highestLevel + 1);
         enemy.path = path;
         enemy.critter = critter;
     }

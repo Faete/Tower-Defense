@@ -17,12 +17,13 @@ MonoBehaviour:
   name: Gloob
   level: 1
   experience: 0
-  experienceGranted: 0
+  experienceToLevel: 100
+  baseExperienceGranted: 5
   health: 5
   sprite: {fileID: 734307259, guid: dd4b17d2e8382f0468511f117b3b5821, type: 3}
-  attackPower: 1
-  reloadTime: 0.5
-  projectileSpeed: 0.5
+  baseAttack: 2
+  reloadTime: 0.75
+  projectileSpeed: 0.35
   attackRange: 2
   projectileSprite: {fileID: 21300000, guid: c62a3cbd2c008d445915fb5fbc25468e, type: 3}
   moveSpeed: 1

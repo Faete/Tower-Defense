@@ -17,10 +17,11 @@ MonoBehaviour:
   name: Gimbo
   level: 1
   experience: 0
-  experienceGranted: 0
+  experienceToLevel: 100
+  baseExperienceGranted: 10
   health: 10
   sprite: {fileID: 1715428240, guid: 181b162e0feb77f4880332471a451da3, type: 3}
-  attackPower: 1
+  baseAttack: 1
   reloadTime: 0.5
   projectileSpeed: 0.5
   attackRange: 2
