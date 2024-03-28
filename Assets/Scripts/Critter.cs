@@ -13,11 +13,12 @@ public class Critter : ScriptableObject
     public new string name;
     public int level;
     public int experience;
-    public int experienceGranted;
+    public int experienceToLevel;
+    public int baseExperienceGranted;
     public float health;
     public Sprite sprite;
 
-    public float attackPower;
+    public float baseAttack;
     public float reloadTime;
     public float projectileSpeed;
     public float attackRange;

@@ -41,11 +41,14 @@ public class Enemy : MonoBehaviour
         {
             currentHealth -= other.gameObject.GetComponent<Projectile>().power;
             if(currentHealth < (critter.health / 2)) canCatch = true;
+            if(currentHealth <= 0){
+                Destroy(gameObject);
+                other.gameObject.GetComponentInParent<Tower>().GainExperience(critter.baseExperienceGranted * critter.level);
+            }
         }
     }
     
     void Movement(){
-        if(currentHealth <= 0) Destroy(gameObject);
         healthBarFill.localScale = new Vector3(currentHealth / critter.health, 0.15f, 1f);
 
         if((pathPointIndex + 1) >= pathPoints.Count) Destroy(gameObject);
