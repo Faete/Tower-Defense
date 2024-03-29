@@ -7,10 +7,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Critter : ScriptableObject
 {
-    public bool catchable;
-    public bool canSpawnOnWater;
-
     public new string name;
+    public bool catchable;
+
     public int level;
     public int experience;
     public int experienceToLevel;

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 470383413
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8804072a228e69f4ca3e5576bd95d719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 539860653544510027, guid: 1d008e29b3404664a9551bf14f613115, type: 3}
   critter: {fileID: 0}
+  projectilePrefab: {fileID: 539860653544510027, guid: 1d008e29b3404664a9551bf14f613115, type: 3}
 --- !u!61 &7180241134048933080
 BoxCollider2D:
   m_ObjectHideFlags: 0
