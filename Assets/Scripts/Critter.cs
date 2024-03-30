@@ -24,4 +24,21 @@ public class Critter : ScriptableObject
     public Sprite projectileSprite;
 
     public float moveSpeed;
+
+    public float AttackPower(){
+        return baseAttack * Mathf.Pow(1.05f, level);
+    }
+
+    public float Health(){
+        return health * Mathf.Pow(1.05f, level);
+    }
+
+    public void GainExperience(int exp){
+        experience += exp;
+        if(experience >= experienceToLevel){
+            level++;
+            experience -= experienceToLevel;
+            experienceToLevel += 100;
+        }
+    }
 }

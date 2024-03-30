@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour
             GameObject projectileObject = Instantiate(projectilePrefab, transform);
             Projectile projectile = projectileObject.GetComponent<Projectile>();
             projectile.fireSpeed = critter.projectileSpeed;
-            projectile.power = critter.baseAttack * Mathf.Pow(1.05f, critter.level);
+            projectile.power = critter.AttackPower();
             projectileObject.GetComponent<SpriteRenderer>().sprite = critter.projectileSprite;
             projectile.target = hit.transform;
             canShoot = false;
@@ -32,14 +32,6 @@ public class Tower : MonoBehaviour
 
     void CanShootAgain(){
         canShoot = true;
-    }
-
-    public void GainExperience(int exp){
-        if(critter.experience >= critter.experienceToLevel){
-            critter.level++;
-            critter.experience -= critter.experienceToLevel;
-            critter.experienceToLevel += 100;
-        }
     }
 
     public Critter Recall(){

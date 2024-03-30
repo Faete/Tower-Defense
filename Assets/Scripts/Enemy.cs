@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
             if(currentHealth < (critter.health / 2)) canCatch = true;
             if(currentHealth <= 0){
                 Destroy(gameObject);
-                other.gameObject.GetComponentInParent<Tower>().GainExperience(critter.baseExperienceGranted * critter.level);
+                other.gameObject.GetComponentInParent<Tower>().critter.GainExperience(critter.baseExperienceGranted * critter.level);
             }
         }
     }
