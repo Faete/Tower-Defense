@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -15,8 +16,20 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int lowestLevel;
     [SerializeField] int highestLevel;
 
+    List<Enemy> enemies = new List<Enemy>();
+    bool lastWaveSpawned = false;
+    bool waveClearMessageNotSent = true;
+
     void Start(){
         StartCoroutine(SpawnWaves());
+    }
+
+    void Update(){
+        enemies.RemoveAll(x => x == null);
+        if(waveClearMessageNotSent && lastWaveSpawned && enemies.Count == 0){
+            waveClearMessageNotSent = false;
+            Debug.Log("Level Cleared");
+        }
     }
 
     void SpawnCritter(){
@@ -26,6 +39,7 @@ public class WaveManager : MonoBehaviour
         critter.level = Random.Range(lowestLevel, highestLevel + 1);
         enemy.path = path;
         enemy.critter = critter;
+        enemies.Add(enemy);
     }
 
     IEnumerator SpawnWaves(){
@@ -36,5 +50,6 @@ public class WaveManager : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenWaves);
         }
+        lastWaveSpawned = true;
     }
 }

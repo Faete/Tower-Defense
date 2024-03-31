@@ -357,7 +357,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4b15d2d49e3b5b44a825f7d7269b250, type: 2}
   - {fileID: 11400000, guid: f52ae70ce8452e24da06fc099ab60682, type: 2}
   - {fileID: 11400000, guid: 8da1a5317c729b144840f55ea2baa961, type: 2}
-  numWaves: 10
+  numWaves: 2
   crittersPerWave: 5
   timeBetweenWaves: 3
   timeBetweenSpawns: 1.5
@@ -921,7 +921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4885892, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -260.50003, y: 2.9999886}
+  m_AnchoredPosition: {x: -260.5, y: 2.9999886}
   m_SizeDelta: {x: 149, y: 104.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542289316
@@ -2268,7 +2268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4885892, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 361.49997, y: 2.9999886}
+  m_AnchoredPosition: {x: 361.5, y: 2.9999886}
   m_SizeDelta: {x: 149, y: 104.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347874751
@@ -2784,10 +2784,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e329024bc401c4545a19d716016e1968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  critterLoader: {fileID: 11400000, guid: 9a1eee53ab91b5342940a8646f7bd3a8, type: 2}
   critters:
   - {fileID: 11400000, guid: 8da1a5317c729b144840f55ea2baa961, type: 2}
-  - {fileID: 11400000, guid: c4b15d2d49e3b5b44a825f7d7269b250, type: 2}
-  catchers: 5
+  catchers: 0
 --- !u!1 &1875283494
 GameObject:
   m_ObjectHideFlags: 0
