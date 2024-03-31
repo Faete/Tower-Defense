@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
         Load();
     }
 
-    void Save(){
+    public void Save(){
         savedata.SaveCritters(critters);
         savedata.catchers = catchers;
         string json = JsonUtility.ToJson(savedata);

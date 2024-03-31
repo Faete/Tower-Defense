@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,7 +29,10 @@ public class WaveManager : MonoBehaviour
         enemies.RemoveAll(x => x == null);
         if(waveClearMessageNotSent && lastWaveSpawned && enemies.Count == 0){
             waveClearMessageNotSent = false;
-            Debug.Log("Level Cleared");
+            Tower[] towers = UnityEngine.Object.FindObjectsOfType<Tower>();
+            InventoryManager inventoryManager = UnityEngine.Object.FindObjectOfType<InventoryManager>();
+            foreach(Tower tower in towers) inventoryManager.critters.Add(tower.Recall());
+            inventoryManager.Save();
         }
     }
 
