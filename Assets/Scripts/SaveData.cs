@@ -7,7 +7,7 @@ public class SaveData
 {
     public string critters;
     public int catchers;
-    public int money;
+    public int level;
 
     public void SaveCritters(List<Critter> critterList){
         string critterString = "";

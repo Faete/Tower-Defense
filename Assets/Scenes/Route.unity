@@ -363,6 +363,7 @@ MonoBehaviour:
   timeBetweenSpawns: 1.5
   lowestLevel: 1
   highestLevel: 3
+  catchersPrize: 2
 --- !u!1 &178142266
 GameObject:
   m_ObjectHideFlags: 0

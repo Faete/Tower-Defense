@@ -5,12 +5,13 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] CritterLoader critterLoader;
-    SaveData savedata = new SaveData();
+    public SaveData savedata = new SaveData();
     public List<Critter> critters;
     public int catchers;
 
     void Start(){
         Load();
+        Debug.Log(Application.persistentDataPath);
     }
 
     public void Save(){

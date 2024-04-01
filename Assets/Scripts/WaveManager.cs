@@ -10,16 +10,20 @@ public class WaveManager : MonoBehaviour
     [SerializeField] Transform path;
 
     [SerializeField] List<Critter> critters;
+    [SerializeField] Critter boss;
     [SerializeField] int numWaves;
     [SerializeField] int crittersPerWave;
     [SerializeField] float timeBetweenWaves;
     [SerializeField] float timeBetweenSpawns;
     [SerializeField] int lowestLevel;
     [SerializeField] int highestLevel;
+    [SerializeField] int levelId;
 
     List<Enemy> enemies = new List<Enemy>();
     bool lastWaveSpawned = false;
     bool waveClearMessageNotSent = true;
+
+    public int catchersPrize;
 
     void Start(){
         StartCoroutine(SpawnWaves());
@@ -32,6 +36,10 @@ public class WaveManager : MonoBehaviour
             Tower[] towers = UnityEngine.Object.FindObjectsOfType<Tower>();
             InventoryManager inventoryManager = UnityEngine.Object.FindObjectOfType<InventoryManager>();
             foreach(Tower tower in towers) inventoryManager.critters.Add(tower.Recall());
+            if(inventoryManager.savedata.level >= levelId){
+                inventoryManager.catchers += catchersPrize;
+                inventoryManager.savedata.level++;
+            }
             inventoryManager.Save();
         }
     }
@@ -39,6 +47,15 @@ public class WaveManager : MonoBehaviour
     void SpawnCritter(){
         int randomIndex = Random.Range(0, critters.Count);
         Critter critter = Instantiate(critters[randomIndex]);
+        Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
+        critter.level = Random.Range(lowestLevel, highestLevel + 1);
+        enemy.path = path;
+        enemy.critter = critter;
+        enemies.Add(enemy);
+    }
+
+    void SpawnBoss(){
+        Critter critter = Instantiate(boss);
         Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
         critter.level = Random.Range(lowestLevel, highestLevel + 1);
         enemy.path = path;
@@ -54,6 +71,7 @@ public class WaveManager : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenWaves);
         }
+        if(boss != null) SpawnBoss();
         lastWaveSpawned = true;
     }
 }
