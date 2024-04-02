@@ -36,7 +36,7 @@ public class WaveManager : MonoBehaviour
             Tower[] towers = UnityEngine.Object.FindObjectsOfType<Tower>();
             InventoryManager inventoryManager = UnityEngine.Object.FindObjectOfType<InventoryManager>();
             foreach(Tower tower in towers) inventoryManager.critters.Add(tower.Recall());
-            if(inventoryManager.savedata.level >= levelId){
+            if(inventoryManager.savedata.level <= levelId){
                 inventoryManager.catchers += catchersPrize;
                 inventoryManager.savedata.level++;
             }

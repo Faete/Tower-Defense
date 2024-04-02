@@ -357,12 +357,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4b15d2d49e3b5b44a825f7d7269b250, type: 2}
   - {fileID: 11400000, guid: f52ae70ce8452e24da06fc099ab60682, type: 2}
   - {fileID: 11400000, guid: 8da1a5317c729b144840f55ea2baa961, type: 2}
+  boss: {fileID: 0}
   numWaves: 2
   crittersPerWave: 5
   timeBetweenWaves: 3
   timeBetweenSpawns: 1.5
   lowestLevel: 1
   highestLevel: 3
+  levelId: 1
   catchersPrize: 2
 --- !u!1 &178142266
 GameObject:
