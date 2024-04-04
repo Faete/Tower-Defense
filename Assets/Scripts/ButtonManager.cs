@@ -5,6 +5,7 @@ using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -18,14 +19,23 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject leftButton;
     [SerializeField] GameObject rightButton;
     [SerializeField] GameObject catcherButton;
+    [SerializeField] GameObject firstTimeCompletionText;
 
     List<Critter> critterWindow;
     int critterWindowNum = 0;
+    int levelId;
+    int firstTimeCompletionBonus;
 
+    void Start(){
+        WaveManager wm = Object.FindAnyObjectByType<WaveManager>();
+        levelId = wm.levelId;
+        firstTimeCompletionBonus = wm.catchersPrize;
+    }
     void Update(){
         SetCritterWindow();
         DisplayArrowButtons();
         CatcherButtonText();
+        FirstTimeBonusText();
     }
 
     void SetCritterWindow(){
@@ -53,6 +63,12 @@ public class ButtonManager : MonoBehaviour
         catcherButton.GetComponentInChildren<TextMeshProUGUI>().text = inventoryManager.catchers.ToString();
     }
 
+    void FirstTimeBonusText(){
+        firstTimeCompletionText.GetComponent<TextMeshProUGUI>().text = $"First Time Competion Bonus: +{firstTimeCompletionBonus} Catchers";
+        if(inventoryManager.savedata.level > levelId) firstTimeCompletionText.SetActive(false);
+        else firstTimeCompletionText.SetActive(true);
+    }
+
     public void Build(int idx){
         Critter critter = critterWindow[idx];
         GameObject builderObject = Instantiate(builderPrefab, transform.position, Quaternion.identity);
@@ -77,5 +93,9 @@ public class ButtonManager : MonoBehaviour
 
     public void DecCritterWindow(){
         critterWindowNum--;
+    }
+
+    public void Continue(){
+        SceneManager.LoadScene("Menu");
     }
 }

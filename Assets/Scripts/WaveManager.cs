@@ -17,7 +17,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float timeBetweenSpawns;
     [SerializeField] int lowestLevel;
     [SerializeField] int highestLevel;
-    [SerializeField] int levelId;
+    public int levelId;
+    [SerializeField] GameObject critterPanel;
+    [SerializeField] GameObject levelCompletePanel;
 
     List<Enemy> enemies = new List<Enemy>();
     bool lastWaveSpawned = false;
@@ -32,15 +34,19 @@ public class WaveManager : MonoBehaviour
     void Update(){
         enemies.RemoveAll(x => x == null);
         if(waveClearMessageNotSent && lastWaveSpawned && enemies.Count == 0){
+            // This should really be handled elsewhere using Unity's Event System
+            // Oh well...
             waveClearMessageNotSent = false;
-            Tower[] towers = UnityEngine.Object.FindObjectsOfType<Tower>();
-            InventoryManager inventoryManager = UnityEngine.Object.FindObjectOfType<InventoryManager>();
+            Tower[] towers = Object.FindObjectsOfType<Tower>();
+            InventoryManager inventoryManager = Object.FindObjectOfType<InventoryManager>();
             foreach(Tower tower in towers) inventoryManager.critters.Add(tower.Recall());
             if(inventoryManager.savedata.level <= levelId){
                 inventoryManager.catchers += catchersPrize;
                 inventoryManager.savedata.level++;
             }
-            inventoryManager.Save();
+            inventoryManager.Save();           
+            critterPanel.gameObject.SetActive(false);
+            levelCompletePanel.gameObject.SetActive(true);
         }
     }
 

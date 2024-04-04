@@ -11,7 +11,6 @@ public class InventoryManager : MonoBehaviour
 
     void Start(){
         Load();
-        Debug.Log(Application.persistentDataPath);
     }
 
     public void Save(){

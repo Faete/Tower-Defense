@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class Builder : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class Builder : MonoBehaviour
         spriteRenderer.sprite = critter.sprite;
         spriteRenderer.color = new Color(1f, 1f, 1f, 0.75f);
     }
+
     void Update()
     { 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -27,7 +30,8 @@ public class Builder : MonoBehaviour
         Vector3 tileWorldPos = tilemap.CellToLocal(tilePos);
         transform.position = tileWorldPos + offset;
         if(Input.GetMouseButtonDown(0)){
-            if(Physics2D.Raycast(transform.position, Vector3.zero)) Destroy(gameObject);
+            if(EventSystem.current.IsPointerOverGameObject()) Destroy(gameObject);
+            else if(Physics2D.Raycast(transform.position, Vector3.zero)) Destroy(gameObject);
             else{
                 GameObject towerObject = Instantiate(towerPrefab, transform.position, Quaternion.identity);
                 Tower towerComponent = towerObject.GetComponent<Tower>();
