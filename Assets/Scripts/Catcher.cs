@@ -14,6 +14,8 @@ public class Catcher : MonoBehaviour
 
     void Start(){
         Time.timeScale = 0f;
+        ClickChecker cc = FindObjectOfType<ClickChecker>();
+        cc.Deselect();
     }
 
     void Update()

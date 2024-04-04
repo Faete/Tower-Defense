@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -34,8 +35,8 @@ public class Tower : MonoBehaviour
         canShoot = true;
     }
 
-    public Critter Recall(){
+    public void Recall(){
         Destroy(gameObject);
-        return critter;
+        FindObjectOfType<InventoryManager>().critters.Add(critter);
     }
 }

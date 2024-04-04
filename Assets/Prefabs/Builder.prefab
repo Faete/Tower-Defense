@@ -51,9 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
   critter: {fileID: 0}
-  towerPrefab: {fileID: 2117026196295400821, guid: 71a21e16884b55b4ebf20949d15d278d, type: 3}
+  towerPrefab: {fileID: 6289111262446012564, guid: 27a4457a9a0c92b479b72298a58cc01d, type: 3}
   critterIdx: 0
   inventoryManager: {fileID: 0}
+  clickCheckerPrefab: {fileID: 1112566281775083715, guid: bb24cf79eac6a3041bbdfb988a11cd3b, type: 3}
 --- !u!212 &6802680851884940660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1239862665
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7882353}

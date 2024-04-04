@@ -37,9 +37,10 @@ public class WaveManager : MonoBehaviour
             // This should really be handled elsewhere using Unity's Event System
             // Oh well...
             waveClearMessageNotSent = false;
-            Tower[] towers = Object.FindObjectsOfType<Tower>();
-            InventoryManager inventoryManager = Object.FindObjectOfType<InventoryManager>();
-            foreach(Tower tower in towers) inventoryManager.critters.Add(tower.Recall());
+            Destroy(FindObjectOfType<Builder>().gameObject);
+            Tower[] towers = FindObjectsOfType<Tower>();
+            InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+            foreach(Tower tower in towers) tower.Recall();
             if(inventoryManager.savedata.level <= levelId){
                 inventoryManager.catchers += catchersPrize;
                 inventoryManager.savedata.level++;

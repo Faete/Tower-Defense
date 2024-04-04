@@ -16,11 +16,15 @@ public class Builder : MonoBehaviour
 
     public int critterIdx;
     public InventoryManager inventoryManager;
+    [SerializeField] GameObject clickCheckerPrefab;
 
     void Start(){
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = critter.sprite;
         spriteRenderer.color = new Color(1f, 1f, 1f, 0.75f);
+        ClickChecker cc = FindObjectOfType<ClickChecker>();
+        cc.Deselect();
+        Destroy(cc.gameObject);
     }
 
     void Update()
@@ -30,8 +34,14 @@ public class Builder : MonoBehaviour
         Vector3 tileWorldPos = tilemap.CellToLocal(tilePos);
         transform.position = tileWorldPos + offset;
         if(Input.GetMouseButtonDown(0)){
-            if(EventSystem.current.IsPointerOverGameObject()) Destroy(gameObject);
-            else if(Physics2D.Raycast(transform.position, Vector3.zero)) Destroy(gameObject);
+            if(EventSystem.current.IsPointerOverGameObject()){
+                Destroy(gameObject);
+                Instantiate(clickCheckerPrefab, transform.position, Quaternion.identity);
+            }
+            else if(Physics2D.Raycast(transform.position, Vector3.zero)){
+                Destroy(gameObject);
+                Instantiate(clickCheckerPrefab, transform.position, Quaternion.identity);
+            }
             else{
                 GameObject towerObject = Instantiate(towerPrefab, transform.position, Quaternion.identity);
                 Tower towerComponent = towerObject.GetComponent<Tower>();
@@ -39,8 +49,12 @@ public class Builder : MonoBehaviour
 
                 inventoryManager.critters.Remove(inventoryManager.critters[critterIdx]);
                 Destroy(gameObject);
+                Instantiate(clickCheckerPrefab, transform.position, Quaternion.identity);
             }
         }
-        if(Input.GetMouseButtonDown(1)) Destroy(gameObject);
+        if(Input.GetMouseButtonDown(1)){
+            Destroy(gameObject);
+            Instantiate(clickCheckerPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

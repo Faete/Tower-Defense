@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Projectile
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -43,11 +44,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Tower
-    uniqueID: 470383413
+  - name: Tiles
+    uniqueID: 410260303
     locked: 0
   - name: Enemy
     uniqueID: 1695957
+    locked: 0
+  - name: Tower
+    uniqueID: 470383413
     locked: 0
   - name: UI
     uniqueID: 3055104631
