@@ -71,6 +71,7 @@ public class WaveManager : MonoBehaviour
     }
 
     IEnumerator SpawnWaves(){
+        yield return new WaitForSeconds(timeBetweenWaves);
         for(int i = 0; i < numWaves; ++i){
             for(int j = 0; j < crittersPerWave; ++j){
                 SpawnCritter();

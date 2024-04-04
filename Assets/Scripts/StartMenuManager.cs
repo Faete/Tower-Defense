@@ -29,8 +29,8 @@ public class StartMenuManager : MonoBehaviour
     public void NewGameConfirmed(){
         savedata = new SaveData();
         savedata.critters = JsonUtility.ToJson(new SaveableCritter(gimbo));
-        savedata.catchers = 0;
-        savedata.level = 1;
+        savedata.catchers = 5;
+        savedata.level = 0;
         string json = JsonUtility.ToJson(savedata);
         File.WriteAllText(saveFilePath, json);
         SceneManager.LoadScene("Menu");
