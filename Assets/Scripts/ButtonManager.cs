@@ -20,6 +20,10 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject rightButton;
     [SerializeField] GameObject catcherButton;
     [SerializeField] GameObject firstTimeCompletionText;
+    [SerializeField] GameObject critterPanel;
+    [SerializeField] GameObject pausePanel;
+
+    bool isPaused;
 
     List<Critter> critterWindow;
     int critterWindowNum = 0;
@@ -36,6 +40,7 @@ public class ButtonManager : MonoBehaviour
         DisplayArrowButtons();
         CatcherButtonText();
         FirstTimeBonusText();
+        Pause();
     }
 
     void SetCritterWindow(){
@@ -49,7 +54,6 @@ public class ButtonManager : MonoBehaviour
             critterButtons[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = critterWindow[i].sprite;
             critterButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = $"Lvl: {critterWindow[i].level}";
         }
-
     }
 
     void DisplayArrowButtons(){
@@ -79,6 +83,41 @@ public class ButtonManager : MonoBehaviour
         builder.inventoryManager = inventoryManager;
     }
 
+    void Pause(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if(isPaused){
+                Time.timeScale = 1f;
+                isPaused = false;
+                pausePanel.SetActive(false);
+                critterPanel.SetActive(true);
+            } else{
+                Time.timeScale = 0f;
+                isPaused = true;
+                pausePanel.SetActive(true);
+                critterPanel.SetActive(false);
+            }
+        }
+    }
+
+    public void Menu(){
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void TitleScreen(){
+        SceneManager.LoadScene("StartScreen");
+    }
+
+    public void Volume(){
+
+    }
+
+    public void PauseContinue(){
+        pausePanel.SetActive(false);
+        critterPanel.SetActive(true);
+        isPaused = false;
+        Time.timeScale = 1f;
+    }
+
     public void Catcher(){
         if(inventoryManager.catchers > 0){
             GameObject catcherObject = Instantiate(catcherPrefab, transform.position, Quaternion.identity);
@@ -87,6 +126,7 @@ public class ButtonManager : MonoBehaviour
             catcher.inventoryManager = inventoryManager;
         }
     }
+
     public void IncCritterWindow(){
         critterWindowNum++;
     }
