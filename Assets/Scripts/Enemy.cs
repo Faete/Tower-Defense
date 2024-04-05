@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         healthBarFill = transform.GetChild(0);
         GetComponent<SpriteRenderer>().sprite = critter.sprite;
-        currentHealth = critter.health;
+        currentHealth = critter.Health();
         foreach(Transform point in path){
             pathPoints.Add(point.position);
         }
@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        healthBarFill.localScale = new Vector3(currentHealth / critter.Health(), 0.15f, 1f);
         Movement();
     }
 
@@ -49,8 +50,6 @@ public class Enemy : MonoBehaviour
     }
     
     void Movement(){
-        healthBarFill.localScale = new Vector3(currentHealth / critter.health, 0.15f, 1f);
-
         if((pathPointIndex + 1) >= pathPoints.Count) Destroy(gameObject);
         else{
             transform.position = Vector3.MoveTowards(transform.position, pathPoints[pathPointIndex + 1], critter.moveSpeed * Time.deltaTime);

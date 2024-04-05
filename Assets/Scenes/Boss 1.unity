@@ -486,21 +486,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6525678384354156477, guid: 5481e6a56027a6e4e87171fc15e481ce, type: 3}
   path: {fileID: 1577676611}
-  critters:
-  - {fileID: 11400000, guid: c4b15d2d49e3b5b44a825f7d7269b250, type: 2}
-  - {fileID: 11400000, guid: f52ae70ce8452e24da06fc099ab60682, type: 2}
-  - {fileID: 11400000, guid: 8da1a5317c729b144840f55ea2baa961, type: 2}
-  boss: {fileID: 0}
-  numWaves: 2
+  critters: []
+  boss: {fileID: 11400000, guid: 2a38d63e05855fb478ff9859b8310e2a, type: 2}
+  numWaves: 0
   crittersPerWave: 5
   timeBetweenWaves: 3
   timeBetweenSpawns: 1.5
   lowestLevel: 1
   highestLevel: 3
-  levelId: 0
+  levelId: 1
   critterPanel: {fileID: 843301402}
   levelCompletePanel: {fileID: 1106597249}
-  catchersPrize: 2
+  catchersPrize: 3
 --- !u!1 &178142266
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,8 @@ public class WaveManager : MonoBehaviour
             // This should really be handled elsewhere using Unity's Event System
             // Oh well...
             waveClearMessageNotSent = false;
-            Destroy(FindObjectOfType<Builder>().gameObject);
+            Builder builder = FindObjectOfType<Builder>();
+            if(builder != null) Destroy(builder.gameObject);
             Tower[] towers = FindObjectsOfType<Tower>();
             InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
             foreach(Tower tower in towers) tower.Recall();
@@ -64,9 +65,9 @@ public class WaveManager : MonoBehaviour
     void SpawnBoss(){
         Critter critter = Instantiate(boss);
         Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
-        critter.level = Random.Range(lowestLevel, highestLevel + 1);
         enemy.path = path;
         enemy.critter = critter;
+        enemy.gameObject.tag = "Boss";
         enemies.Add(enemy);
     }
 

@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   critter: {fileID: 11400000, guid: c4b15d2d49e3b5b44a825f7d7269b250, type: 2}
+  canCatch: 0
 --- !u!50 &335345107965999254
 Rigidbody2D:
   serializedVersion: 4

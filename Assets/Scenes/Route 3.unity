@@ -497,7 +497,7 @@ MonoBehaviour:
   timeBetweenSpawns: 1.5
   lowestLevel: 1
   highestLevel: 3
-  levelId: 1
+  levelId: 2
   critterPanel: {fileID: 843301402}
   levelCompletePanel: {fileID: 1106597249}
   catchersPrize: 2

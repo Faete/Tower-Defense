@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
     void Arrows(){
         if(displayedLevel == 0) leftArrowButton.SetActive(false);
         else leftArrowButton.SetActive(true);
-        if(displayedLevel == saveData.level) rightArrowButton.SetActive(false);
+        if(displayedLevel == saveData.level || displayedLevel == levelToScene.sceneNames.Count - 1) rightArrowButton.SetActive(false);
         else rightArrowButton.SetActive(true);
     }
 
