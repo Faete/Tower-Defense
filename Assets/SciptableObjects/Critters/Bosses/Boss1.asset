@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dobby
   catchable: 1
-  level: 20
+  level: 40
   experience: 0
   experienceToLevel: 100
   baseExperienceGranted: 15
