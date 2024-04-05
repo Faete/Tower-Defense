@@ -33,7 +33,7 @@ public class StartMenuManager : MonoBehaviour
         savedata.level = 0;
         string json = JsonUtility.ToJson(savedata);
         File.WriteAllText(saveFilePath, json);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadGame(){

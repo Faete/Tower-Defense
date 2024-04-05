@@ -64,7 +64,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     void CatcherButtonText(){
-        catcherButton.GetComponentInChildren<TextMeshProUGUI>().text = inventoryManager.catchers.ToString();
+        if(catcherButton != null) catcherButton.GetComponentInChildren<TextMeshProUGUI>().text = inventoryManager.catchers.ToString();
     }
 
     void FirstTimeBonusText(){
