@@ -21,9 +21,7 @@ public class Catcher : MonoBehaviour
     void Update()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3Int tilePos = tilemap.WorldToCell(mousePos);
-        Vector3 tileWorldPos = tilemap.CellToLocal(tilePos);
-        transform.position = tileWorldPos + offset;
+        transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
         if(Input.GetMouseButtonDown(0)){
             RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos, Vector3.zero);
             foreach(RaycastHit2D hit in hits){
