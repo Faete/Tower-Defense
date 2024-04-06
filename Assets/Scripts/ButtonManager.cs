@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -22,6 +20,11 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject firstTimeCompletionText;
     [SerializeField] GameObject critterPanel;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject pauseDefaultPanel;
+    [SerializeField] GameObject pauseVolumePanel;
+    [SerializeField] Slider volumeSlider;
+
+    AudioSource clickAudioSource;
 
     bool isPaused;
 
@@ -31,6 +34,8 @@ public class ButtonManager : MonoBehaviour
     int firstTimeCompletionBonus;
 
     void Start(){
+        clickAudioSource = GetComponent<AudioSource>();
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         WaveManager wm = Object.FindAnyObjectByType<WaveManager>();
         levelId = wm.levelId;
         firstTimeCompletionBonus = wm.catchersPrize;
@@ -74,6 +79,8 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void Build(int idx){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         Critter critter = critterWindow[idx];
         GameObject builderObject = Instantiate(builderPrefab, transform.position, Quaternion.identity);
         Builder builder = builderObject.GetComponent<Builder>();
@@ -94,24 +101,46 @@ public class ButtonManager : MonoBehaviour
                 Time.timeScale = 0f;
                 isPaused = true;
                 pausePanel.SetActive(true);
+                pauseDefaultPanel.SetActive(true);
+                pauseVolumePanel.SetActive(false);
                 critterPanel.SetActive(false);
             }
         }
     }
 
     public void Menu(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         SceneManager.LoadScene("Menu");
     }
 
     public void TitleScreen(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         SceneManager.LoadScene("StartScreen");
     }
 
     public void Volume(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
+        pauseDefaultPanel.SetActive(false);
+        pauseVolumePanel.SetActive(true);
+    }
 
+    public void VolumeBack(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
+        pauseDefaultPanel.SetActive(true);
+        pauseVolumePanel.SetActive(false);
+    }
+
+    public void VolumeChanged(){
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
     }
 
     public void PauseContinue(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         pausePanel.SetActive(false);
         critterPanel.SetActive(true);
         isPaused = false;
@@ -119,6 +148,8 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void Catcher(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         if(inventoryManager.catchers > 0){
             GameObject catcherObject = Instantiate(catcherPrefab, transform.position, Quaternion.identity);
             Catcher catcher = catcherObject.GetComponent<Catcher>();
@@ -128,14 +159,21 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void IncCritterWindow(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         critterWindowNum++;
     }
 
     public void DecCritterWindow(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         critterWindowNum--;
     }
 
     public void Continue(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
+        
         SceneManager.LoadScene("Menu");
     }
 }

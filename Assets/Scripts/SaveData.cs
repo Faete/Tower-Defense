@@ -8,6 +8,7 @@ public class SaveData
     public string critters;
     public int catchers;
     public int level;
+    public float volume;
 
     public void SaveCritters(List<Critter> critterList){
         string critterString = "";

@@ -12,6 +12,7 @@ public class LifeManager : MonoBehaviour
     void Update()
     {
         if(lives == 0){
+            PlayerPrefs.Save();
             Builder builder = FindObjectOfType<Builder>();
             if(builder != null) Destroy(builder.gameObject);
             Tower[] towers = FindObjectsOfType<Tower>();

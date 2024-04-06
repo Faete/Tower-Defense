@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -15,10 +13,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject prevButton;
     [SerializeField] GameObject startButton;
     [SerializeField] TextMeshProUGUI tutorialText;
+    AudioSource clickAudioSource;
 
     int idx;
 
     void Start(){
+        clickAudioSource = gameObject.GetComponent<AudioSource>();
         idx = 0;
         tutorialText.text = texts[0];
         images[0].SetActive(true);
@@ -37,6 +37,8 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void Next(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         if(idx != texts.Count - 1){
             images[idx].SetActive(false);
             idx++;
@@ -46,6 +48,8 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void Prev(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         if(idx != 0){
             images[idx].SetActive(false);
             idx--;
@@ -55,6 +59,8 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void Go(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         SceneManager.LoadScene("Menu");
     }
 }

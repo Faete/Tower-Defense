@@ -14,9 +14,11 @@ public class MenuManager : MonoBehaviour
 
     SaveData saveData;
     int displayedLevel;
+    AudioSource clickAudioSource;
 
     void Start()
     {
+        clickAudioSource = GetComponent<AudioSource>();
         saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(Application.persistentDataPath + "/critters.json"));
         displayedLevel = saveData.level;
     }
@@ -39,14 +41,24 @@ public class MenuManager : MonoBehaviour
     }
 
     public void DisplayNextLevel(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         displayedLevel++;
     }
 
     public void DisplayPreviousLevel(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         displayedLevel--;
     }
 
     public void StartLevel(){
+        clickAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+        clickAudioSource.Play();
         SceneManager.LoadScene(levelToScene.Convert(displayedLevel));
+    }
+
+    public void Home(){
+        SceneManager.LoadScene("StartScreen");
     }
 }

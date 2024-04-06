@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dobby
   catchable: 1
-  level: 40
+  level: 25
   experience: 0
   experienceToLevel: 100
   baseExperienceGranted: 15
-  health: 15
+  health: 50
   sprite: {fileID: 773719799, guid: 770a070842d660d44a8f9425e24a251e, type: 3}
   baseAttack: 3
   reloadTime: 1
   projectileSpeed: 0.25
   attackRange: 2
   projectileSprite: {fileID: 21300000, guid: e45da37b78a3e3e428325de064e3c8cf, type: 3}
-  moveSpeed: 1
+  moveSpeed: 1.5

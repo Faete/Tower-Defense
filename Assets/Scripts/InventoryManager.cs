@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void Save(){
+        PlayerPrefs.Save();
         savedata.SaveCritters(critters);
         savedata.catchers = catchers;
         string json = JsonUtility.ToJson(savedata);

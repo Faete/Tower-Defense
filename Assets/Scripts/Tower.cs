@@ -10,16 +10,20 @@ public class Tower : MonoBehaviour
 
     [SerializeField] GameObject projectilePrefab;
 
+    AudioSource fireAudioSource;
     protected bool canShoot = true;
 
     void Start(){
         GetComponent<SpriteRenderer>().sprite = critter.sprite;
+        fireAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, critter.attackRange, transform.position, 0, 1<<6);
         if(hit && canShoot){
+            fireAudioSource.volume = PlayerPrefs.GetFloat("Volume");
+            fireAudioSource.Play();
             GameObject projectileObject = Instantiate(projectilePrefab, transform);
             Projectile projectile = projectileObject.GetComponent<Projectile>();
             projectile.fireSpeed = critter.projectileSpeed;

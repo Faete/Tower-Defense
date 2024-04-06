@@ -28,6 +28,7 @@ public class WaveManager : MonoBehaviour
     public int catchersPrize;
 
     void Start(){
+        Time.timeScale = 1f;
         StartCoroutine(SpawnWaves());
     }
 
@@ -42,13 +43,14 @@ public class WaveManager : MonoBehaviour
             Tower[] towers = FindObjectsOfType<Tower>();
             InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
             foreach(Tower tower in towers) tower.Recall();
+            critterPanel.gameObject.SetActive(false);
+            levelCompletePanel.gameObject.SetActive(true);
             if(inventoryManager.savedata.level <= levelId){
                 inventoryManager.catchers += catchersPrize;
                 inventoryManager.savedata.level++;
+                levelCompletePanel.transform.GetChild(1).gameObject.SetActive(true);
             }
             inventoryManager.Save();           
-            critterPanel.gameObject.SetActive(false);
-            levelCompletePanel.gameObject.SetActive(true);
         }
     }
 
