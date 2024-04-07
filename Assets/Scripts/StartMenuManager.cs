@@ -38,7 +38,6 @@ public class StartMenuManager : MonoBehaviour
         savedata.critters = JsonUtility.ToJson(new SaveableCritter(gimbo));
         savedata.catchers = 5;
         savedata.level = 0;
-        savedata.volume = 1f;
         string json = JsonUtility.ToJson(savedata);
         File.WriteAllText(saveFilePath, json);
         SceneManager.LoadScene("Tutorial");

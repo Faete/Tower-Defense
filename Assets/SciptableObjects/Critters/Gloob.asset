@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f3dc88811d88241a5af591ad595ee7, type: 3}
   m_Name: Gloob
   m_EditorClassIdentifier: 
-  catchable: 1
-  canSpawnOnWater: 0
   name: Gloob
+  catchable: 1
   level: 1
   experience: 0
   experienceToLevel: 100
@@ -25,5 +24,5 @@ MonoBehaviour:
   reloadTime: 0.75
   projectileSpeed: 0.35
   attackRange: 2
-  projectileSprite: {fileID: 21300000, guid: c62a3cbd2c008d445915fb5fbc25468e, type: 3}
+  projectileSprite: {fileID: 21300000, guid: 383686c2f4af70a4e98bde6e2eb9f905, type: 3}
   moveSpeed: 1

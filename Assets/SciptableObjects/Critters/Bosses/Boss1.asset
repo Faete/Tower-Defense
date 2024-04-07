@@ -19,7 +19,7 @@ MonoBehaviour:
   experienceToLevel: 100
   baseExperienceGranted: 15
   health: 50
-  sprite: {fileID: 773719799, guid: 770a070842d660d44a8f9425e24a251e, type: 3}
+  sprite: {fileID: -1586989730, guid: b4734cc824e07ee4ab707b1265c39e5d, type: 3}
   baseAttack: 3
   reloadTime: 1
   projectileSpeed: 0.25
